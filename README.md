@@ -69,8 +69,8 @@ try_files {path} /index.html
   checks that the caller owns the list.
 - Sign-up verifies the email with a 6-digit code, and "Forgot password?" resets by code
   (`backend/convex/otp.ts`, Resend from `Picki <noreply@send.pknspace.com>`; without `RESEND_API_KEY`
-  the code is only logged in the `convex dev` output). Users from before verification are marked
-  verified by the one-off `migrations:markUsersVerified`.
+  the code is only logged in the `convex dev` output). Users from before verification were marked
+  verified by a one-off migration (2026-10-31).
 - Tools for kunji: `backend/convex/http.ts` adds kunji's App contract routes via `addKunjiRoutes`
   (`backend/convex/lib/kunji.ts`, copied from karya): `GET /kunji/tools`, `POST /kunji/access` and
   `POST /kunji/call`, behind `Authorization: Bearer $KUNJI_SECRET`. The user is the single verified

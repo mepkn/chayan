@@ -16,7 +16,6 @@ import type * as lib_access from "../lib/access.js";
 import type * as lib_allowlist from "../lib/allowlist.js";
 import type * as lib_kunji from "../lib/kunji.js";
 import type * as lists from "../lists.js";
-import type * as migrations from "../migrations.js";
 import type * as otp from "../otp.js";
 import type * as selections from "../selections.js";
 
@@ -35,7 +34,6 @@ declare const fullApi: ApiFromModules<{
   "lib/allowlist": typeof lib_allowlist;
   "lib/kunji": typeof lib_kunji;
   lists: typeof lists;
-  migrations: typeof migrations;
   otp: typeof otp;
   selections: typeof selections;
 }>;
