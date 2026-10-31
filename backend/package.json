@@ -8,8 +8,9 @@
     "deploy": "convex deploy",
     "lint": "eslint .",
     "typecheck": "tsc -p convex --noEmit",
-    "check": "npm run typecheck && npm run lint",
-    "setup:auth": "node scripts/setup-auth-keys.ts --apply"
+    "check": "npm run typecheck && npm run lint && npm run test",
+    "setup:auth": "node scripts/setup-auth-keys.ts --apply",
+    "test": "vitest run"
   },
   "engines": {
     "node": ">=22.18"

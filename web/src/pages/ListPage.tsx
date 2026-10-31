@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router";
+import { ConvexError } from "convex/values";
 import {
   ArrowLeft,
   Share2,
@@ -182,7 +183,8 @@ export function ListPage() {
       }
     } catch (err: unknown) {
       setIsSelecting(false);
-      setErrorMessage(err instanceof Error ? err.message : "Selection failed");
+      // ConvexError carries the message meant for people (empty list, round complete).
+      setErrorMessage(err instanceof ConvexError && typeof err.data === "string" ? err.data : "Selection failed");
     }
   };
 

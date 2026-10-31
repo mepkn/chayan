@@ -71,8 +71,14 @@ try_files {path} /index.html
   (`backend/convex/otp.ts`, Resend from `Picki <noreply@send.pknspace.com>`; without `RESEND_API_KEY`
   the code is only logged in the `convex dev` output). Users from before verification are marked
   verified by the one-off `migrations:markUsersVerified`.
+- Tools for kunji: `backend/convex/http.ts` adds kunji's App contract routes via `addKunjiRoutes`
+  (`backend/convex/lib/kunji.ts`, copied from karya): `GET /kunji/tools`, `POST /kunji/access` and
+  `POST /kunji/call`, behind `Authorization: Bearer $KUNJI_SECRET`. The user is the single verified
+  `users` row with that email, still in `ALLOWED_EMAILS`. Tools (`backend/convex/kunji.ts`):
+  `list_lists`, `get_list` (read-only), `pick_random` (records the pick like the Pick button) and
+  `add_item`; a list is named by its name or slug, and only the user's own lists are found.
 - Production env vars: `JWT_PRIVATE_KEY`/`JWKS` (`node scripts/setup-auth-keys.ts --apply --prod` in `backend/`),
-  `SITE_URL=https://picki.pknspace.com`, `ALLOWED_EMAILS` and `RESEND_API_KEY`.
+  `SITE_URL=https://picki.pknspace.com`, `ALLOWED_EMAILS`, `RESEND_API_KEY`, and `KUNJI_SECRET` / `KUNJI_URL` (kunji's `.convex.site` URL).
 
 - `backend/` is the Convex backend with its own `package.json`; `backend/convex/` holds the schema and functions (lists, items, selections). The random pick is
   done server-side in `selections:selectRandomItem`.
