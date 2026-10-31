@@ -5,7 +5,7 @@ animated themes (Cyber HUD, Gold Stadium, Crimson Arena) land on a winner.
 
 ## Features
 
-- Sign-in with email + password; only emails in `ALLOWED_EMAILS` can sign up, and each user sees only their own lists.
+- Sign-in with email + password; sign-up verifies the email with a 6-digit code and "Forgot password?" resets by code. Only emails in `ALLOWED_EMAILS` can sign up, and each user sees only their own lists.
 - Lists with shareable `/lists/:slug` URLs: anyone with the link can watch the list and its picks live, only the owner can edit or pick.
 - Inline rename, duplicate and delete.
 - Three selection modes: no repetition (rounds), allow repetition, auto-restart.
@@ -67,8 +67,12 @@ try_files {path} /index.html
 - Auth is Convex Auth (Password). `ALLOWED_EMAILS` is checked at sign-up/sign-in and again on every
   request (`backend/convex/lib/access.ts`), so removing an email cuts off existing sessions. Every mutation
   checks that the caller owns the list.
+- Sign-up verifies the email with a 6-digit code, and "Forgot password?" resets by code
+  (`backend/convex/otp.ts`, Resend from `Picki <noreply@send.pknspace.com>`; without `RESEND_API_KEY`
+  the code is only logged in the `convex dev` output). Users from before verification are marked
+  verified by the one-off `migrations:markUsersVerified`.
 - Production env vars: `JWT_PRIVATE_KEY`/`JWKS` (`node scripts/setup-auth-keys.ts --apply --prod` in `backend/`),
-  `SITE_URL=https://picki.pknspace.com` and `ALLOWED_EMAILS`.
+  `SITE_URL=https://picki.pknspace.com`, `ALLOWED_EMAILS` and `RESEND_API_KEY`.
 
 - `backend/` is the Convex backend with its own `package.json`; `backend/convex/` holds the schema and functions (lists, items, selections). The random pick is
   done server-side in `selections:selectRandomItem`.

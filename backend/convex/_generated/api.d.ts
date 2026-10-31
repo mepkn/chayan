@@ -14,6 +14,8 @@ import type * as items from "../items.js";
 import type * as lib_access from "../lib/access.js";
 import type * as lib_allowlist from "../lib/allowlist.js";
 import type * as lists from "../lists.js";
+import type * as migrations from "../migrations.js";
+import type * as otp from "../otp.js";
 import type * as selections from "../selections.js";
 
 import type {
@@ -29,6 +31,8 @@ declare const fullApi: ApiFromModules<{
   "lib/access": typeof lib_access;
   "lib/allowlist": typeof lib_allowlist;
   lists: typeof lists;
+  migrations: typeof migrations;
+  otp: typeof otp;
   selections: typeof selections;
 }>;
 

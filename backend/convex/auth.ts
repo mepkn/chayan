@@ -2,11 +2,12 @@ import { convexAuth } from "@convex-dev/auth/server";
 import { Password } from "@convex-dev/auth/providers/Password";
 import { ConvexError } from "convex/values";
 import { isAllowedEmail } from "./lib/allowlist";
+import { ResendOTP, ResendOTPReset } from "./otp";
 
 export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   providers: [
     Password({
-      // Runs for sign-up and sign-in alike, before anything is stored. Rejecting
+      // Runs for sign-up, sign-in and reset alike, before anything is stored. Rejecting
       // non-allowlisted emails here means nobody outside ALLOWED_EMAILS can sign up.
       profile(params) {
         const email = String(params.email ?? "").trim().toLowerCase();
@@ -23,6 +24,10 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
           throw new ConvexError("Password must be at least 8 characters.");
         }
       },
+      // A 6-digit code by email verifies the address at sign-up; kunji links
+      // accounts across apps by verified email.
+      verify: ResendOTP,
+      reset: ResendOTPReset,
     }),
   ],
 });
