@@ -9,7 +9,7 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
-import { usePicki } from "@/lib/picki-context";
+import { useChayan } from "@/lib/chayan-context";
 import type { SelectionMode } from "@/lib/types";
 
 interface CreateListModalProps {
@@ -30,7 +30,7 @@ export function CreateListModal({ open, onOpenChange }: CreateListModalProps) {
 
 function CreateListForm({ onClose }: { onClose: () => void }) {
   const navigate = useNavigate();
-  const { createList } = usePicki();
+  const { createList } = useChayan();
 
   const [name, setName] = useState("");
   const [itemsText, setItemsText] = useState("");

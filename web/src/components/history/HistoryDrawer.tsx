@@ -3,7 +3,7 @@ import { ConfirmAction } from "@/components/ConfirmAction";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { usePicki } from "@/lib/picki-context";
+import { useChayan } from "@/lib/chayan-context";
 import type { SelectionRecord } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ interface HistoryDrawerProps {
 }
 
 export function HistoryDrawer({ listId, listName, selections, open, onOpenChange, readOnly = false }: HistoryDrawerProps) {
-  const { clearSelections, deleteSelection } = usePicki();
+  const { clearSelections, deleteSelection } = useChayan();
 
   // Group selections by round, newest round first.
   const groupedByRound = selections.reduce<Record<number, SelectionRecord[]>>((acc, sel) => {

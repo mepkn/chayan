@@ -18,7 +18,7 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
-        // Picki's neon looks: an outlined HUD button and a cyan→violet gradient.
+        // Chayan's neon looks: an outlined HUD button and a cyan→violet gradient.
         cyber:
           "border-2 border-primary/60 bg-background/90 font-bold tracking-wider text-primary uppercase shadow-[0_0_25px_rgba(0,240,255,0.25)] hover:border-primary hover:text-cyan-200 hover:shadow-[0_0_35px_rgba(0,240,255,0.5)]",
         glow:

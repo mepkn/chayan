@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <defs>
-    <linearGradient id="picki-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+    <linearGradient id="chayan-grad" x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#00F0FF" />
       <stop offset="100%" stop-color="#8B5CF6" />
     </linearGradient>
   </defs>
-  <rect width="32" height="32" rx="8" fill="url(#picki-grad)" />
+  <rect width="32" height="32" rx="8" fill="url(#chayan-grad)" />
   <!-- A die showing five: picking at random -->
   <rect x="7" y="7" width="18" height="18" rx="4" fill="#06070B" />
   <g fill="#00F0FF">

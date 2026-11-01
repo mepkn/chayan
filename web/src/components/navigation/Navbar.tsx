@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
             <Dice5 className="w-5 h-5 text-black" />
           </div>
           <span className="text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-cyan-400 group-hover:to-cyan-300">
-            PICKI
+            CHAYAN
           </span>
         </Link>
         <Authenticated>

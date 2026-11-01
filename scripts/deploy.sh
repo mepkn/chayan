@@ -10,7 +10,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-URL="https://picki.pknspace.com"
+URL="https://chayan.pknspace.com"
 
 # Reads KEY=VALUE lines literally (values such as deploy keys contain "|", so
 # the files are not sourced as shell). Surrounding quotes are stripped.

@@ -3,11 +3,11 @@ import { useQuery, useConvex } from "convex/react";
 import { api } from "@convex/_generated/api";
 import type { Id } from "@convex/_generated/dataModel";
 import type { ListDoc, SelectionResult, SelectionMode, AnimationTheme } from "./types";
-import { PickiContext, type PickiContextType } from "./picki-context";
+import { ChayanContext, type ChayanContextType } from "./chayan-context";
 import { toListDoc } from "./list-doc";
 
 /** The signed-in user's lists plus every mutation. Items and selections are queried live by the list page. */
-export function PickiProvider({ children }: { children: React.ReactNode }) {
+export function ChayanProvider({ children }: { children: React.ReactNode }) {
   const convex = useConvex();
   const rawLists = useQuery(api.lists.getAllLists);
   const [activeSelectingId, setActiveSelectingId] = useState<string | null>(null);
@@ -106,7 +106,7 @@ export function PickiProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const value: PickiContextType = {
+  const value: ChayanContextType = {
     lists,
     createList,
     updateList,
@@ -123,5 +123,5 @@ export function PickiProvider({ children }: { children: React.ReactNode }) {
     deleteSelection,
   };
 
-  return <PickiContext.Provider value={value}>{children}</PickiContext.Provider>;
+  return <ChayanContext.Provider value={value}>{children}</ChayanContext.Provider>;
 }

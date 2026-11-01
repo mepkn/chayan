@@ -11,7 +11,7 @@ const ME = "me@example.com";
 beforeEach(() => {
   vi.stubEnv("KUNJI_SECRET", SECRET);
   vi.stubEnv("ALLOWED_EMAILS", ME);
-  vi.stubEnv("SITE_URL", "https://picki.test/");
+  vi.stubEnv("SITE_URL", "https://chayan.test/");
 });
 afterEach(() => vi.unstubAllEnvs());
 
@@ -130,8 +130,8 @@ describe("POST /kunji/call", () => {
     const t = await setup();
     const { result } = await call(t, "list_lists");
     expect(result).toEqual([
-      { name: "Lunch", slug: "lunch-bbbbb", url: "https://picki.test/lists/lunch-bbbbb", mode: "no_repetition", items: 2, round: 2, pickedThisRound: 1 },
-      { name: "Old", slug: "old-aaaaa", url: "https://picki.test/lists/old-aaaaa", mode: "allow_repetition", items: 0, round: 2, pickedThisRound: 0 },
+      { name: "Lunch", slug: "lunch-bbbbb", url: "https://chayan.test/lists/lunch-bbbbb", mode: "no_repetition", items: 2, round: 2, pickedThisRound: 1 },
+      { name: "Old", slug: "old-aaaaa", url: "https://chayan.test/lists/old-aaaaa", mode: "allow_repetition", items: 0, round: 2, pickedThisRound: 0 },
     ]);
   });
 
@@ -153,7 +153,7 @@ describe("POST /kunji/call", () => {
     expect(bySlug.result.recentPicks).toHaveLength(1);
     expect(await call(t, "get_list", { list: "Dinner" })).toEqual({
       ok: false,
-      error: { code: "tool_error", message: 'No list "Dinner" in Picki. Use list_lists to see the names.' },
+      error: { code: "tool_error", message: 'No list "Dinner" in Chayan. Use list_lists to see the names.' },
     });
   });
 

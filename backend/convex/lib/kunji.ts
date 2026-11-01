@@ -5,7 +5,7 @@ import { httpAction, type ActionCtx, type QueryCtx } from "../_generated/server"
 import { isAllowedEmail } from "./allowlist";
 
 /**
- * A small client for kunji's AI gateway (kunji SPEC.md → Gateway). picki holds
+ * A small client for kunji's AI gateway (kunji SPEC.md → Gateway). chayan holds
  * no AI keys: kunji calls the user's own key, picked by their email. Server to
  * server only, with KUNJI_URL (the kunji deployment's .convex.site URL) and
  * KUNJI_SECRET (this app's secret from kunji's registry).
@@ -70,8 +70,8 @@ export function kunjiErrorMessage(err: unknown): string {
     case "no_key":
       return "Add your AI key at kunji.pknspace.com";
     case "unauthorized":
-      console.error("kunji refused picki's secret:", err.message);
-      return "Picki isn't connected to kunji right now.";
+      console.error("kunji refused chayan's secret:", err.message);
+      return "Chayan isn't connected to kunji right now.";
     default:
       return err.message;
   }

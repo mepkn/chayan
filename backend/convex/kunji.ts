@@ -5,7 +5,7 @@ import { internalMutation, internalQuery, type QueryCtx } from "./_generated/ser
 import { findKunjiUser, type KunjiTool } from "./lib/kunji";
 import { pickFrom } from "./selections";
 
-// Picki's tools for kunji (kunji SPEC.md → App contract). Each runs as the user
+// Chayan's tools for kunji (kunji SPEC.md → App contract). Each runs as the user
 // kunji named and only ever sees that user's lists. Writes: pick_random (records
 // the pick, like the app's Pick button) and add_item; nothing deletes.
 
@@ -93,7 +93,7 @@ export const getList = internalQuery({
 
 async function requireList(ctx: QueryCtx, userId: Id<"users">, list: string) {
   const l = await findList(ctx, userId, list);
-  if (l === null) throw new ConvexError(`No list "${list}" in Picki. Use list_lists to see the names.`);
+  if (l === null) throw new ConvexError(`No list "${list}" in Chayan. Use list_lists to see the names.`);
   return l;
 }
 
@@ -135,14 +135,14 @@ export const tools: KunjiTool[] = [
   {
     name: "list_lists",
     description:
-      "List the user's Picki lists (random pickers), most recently used first, with item counts, selection mode and how many items were picked in the current round.",
+      "List the user's Chayan lists (random pickers), most recently used first, with item counts, selection mode and how many items were picked in the current round.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     handler: async (ctx, userId) => await ctx.runQuery(internal.kunji.listLists, { userId }),
   },
   {
     name: "get_list",
     description:
-      "One Picki list by name or slug: its items (and which were already picked this round) and the most recent picks.",
+      "One Chayan list by name or slug: its items (and which were already picked this round) and the most recent picks.",
     inputSchema: {
       type: "object",
       properties: {
@@ -156,20 +156,20 @@ export const tools: KunjiTool[] = [
       const historyLimit = Math.min(Math.max(Number(input.historyLimit ?? 10), 0), 100);
       const list = String(input.list);
       const result = await ctx.runQuery(internal.kunji.getList, { userId, list, historyLimit });
-      if (result === null) throw new ConvexError(`No list "${list}" in Picki. Use list_lists to see the names.`);
+      if (result === null) throw new ConvexError(`No list "${list}" in Chayan. Use list_lists to see the names.`);
       return result;
     },
   },
   {
     name: "pick_random",
     description:
-      "Pick a random item from one of the user's Picki lists and record it in the list's history, like pressing Pick in the app. Follows the list's mode: no_repetition skips items already picked this round (and fails once the round is complete), auto_restart starts a new round when all were picked, allow_repetition may repeat.",
+      "Pick a random item from one of the user's Chayan lists and record it in the list's history, like pressing Pick in the app. Follows the list's mode: no_repetition skips items already picked this round (and fails once the round is complete), auto_restart starts a new round when all were picked, allow_repetition may repeat.",
     inputSchema: { type: "object", properties: { list: LIST_INPUT }, required: ["list"], additionalProperties: false },
     handler: async (ctx, userId, input) => await ctx.runMutation(internal.kunji.pickRandom, { userId, list: String(input.list) }),
   },
   {
     name: "add_item",
-    description: "Add one item to one of the user's Picki lists.",
+    description: "Add one item to one of the user's Chayan lists.",
     inputSchema: {
       type: "object",
       properties: { list: LIST_INPUT, value: { type: "string", description: "The item's text." } },

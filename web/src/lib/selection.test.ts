@@ -17,12 +17,12 @@ interface SelectionRecord {
   selectedAt: number;
 }
 
-type PickiSelectionMode = "no_repetition" | "allow_repetition" | "auto_restart";
+type ChayanSelectionMode = "no_repetition" | "allow_repetition" | "auto_restart";
 
 interface ListDoc {
   _id: string;
   name: string;
-  selectionMode: PickiSelectionMode;
+  selectionMode: ChayanSelectionMode;
   currentRound: number;
 }
 

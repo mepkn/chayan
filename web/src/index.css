@@ -34,7 +34,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
 }
 
-/* Dark only: picki has one cyber look. */
+/* Dark only: chayan has one cyber look. */
 :root {
   --radius: 0.75rem;
   --background: #06070b;
@@ -140,12 +140,12 @@
 }
 
 /* Round progress bars: cyan→violet like the rest of the HUD. */
-.picki-progress [data-slot="progress-track"] {
+.chayan-progress [data-slot="progress-track"] {
   height: 0.375rem;
   background: rgb(15 23 42);
   border: 1px solid rgb(30 41 59);
 }
-.picki-progress [data-slot="progress-indicator"] {
+.chayan-progress [data-slot="progress-indicator"] {
   background: linear-gradient(90deg, #06b6d4, #a855f7);
 }
 

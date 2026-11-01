@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { usePicki } from "@/lib/picki-context";
+import { useChayan } from "@/lib/chayan-context";
 import type { ListItem } from "@/lib/types";
 
 interface ListEditorDrawerProps {
@@ -29,7 +29,7 @@ function IconAction({ label, onClick, className, children }: { label: string; on
 }
 
 export function ListEditorDrawer({ listId, items, open, onOpenChange }: ListEditorDrawerProps) {
-  const { addItem, addItemsBulk, updateItem, deleteItem, clearItems } = usePicki();
+  const { addItem, addItemsBulk, updateItem, deleteItem, clearItems } = useChayan();
 
   const [newItemValue, setNewItemValue] = useState("");
   const [showBulkPaste, setShowBulkPaste] = useState(false);

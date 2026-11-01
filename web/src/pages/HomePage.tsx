@@ -6,10 +6,10 @@ import { Badge } from "@/components/ui/badge";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { ListCard } from "@/components/lists/ListCard";
 import { CreateListModal } from "@/components/lists/CreateListModal";
-import { usePicki } from "@/lib/picki-context";
+import { useChayan } from "@/lib/chayan-context";
 
 export function HomePage() {
-  const { lists } = usePicki();
+  const { lists } = useChayan();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 

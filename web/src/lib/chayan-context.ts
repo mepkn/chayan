@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import type { ListDoc, SelectionResult, SelectionMode, AnimationTheme } from "./types";
 
-export interface PickiContextType {
+export interface ChayanContextType {
   lists: ListDoc[];
   createList: (params: {
     name: string;
@@ -30,12 +30,12 @@ export interface PickiContextType {
   deleteSelection: (selectionId: string) => Promise<void>;
 }
 
-export const PickiContext = createContext<PickiContextType | null>(null);
+export const ChayanContext = createContext<ChayanContextType | null>(null);
 
-export function usePicki() {
-  const context = useContext(PickiContext);
+export function useChayan() {
+  const context = useContext(ChayanContext);
   if (!context) {
-    throw new Error("usePicki must be used within a PickiProvider");
+    throw new Error("useChayan must be used within a ChayanProvider");
   }
   return context;
 }

@@ -33,7 +33,7 @@ import { useQuery } from "convex/react";
 import { api } from "@convex/_generated/api";
 import type { Id } from "@convex/_generated/dataModel";
 import { Spinner } from "@/components/ui/spinner";
-import { usePicki } from "@/lib/picki-context";
+import { useChayan } from "@/lib/chayan-context";
 import { toListDoc } from "@/lib/list-doc";
 import type { ListItem, SelectionRecord, SelectionResult } from "@/lib/types";
 import { copyToClipboard } from "@/lib/utils";
@@ -49,7 +49,7 @@ export function ListPage() {
     deleteSelection,
     deleteList,
     updateList,
-  } = usePicki();
+  } = useChayan();
 
   // Live for everyone with the link; only the owner gets canEdit.
   const rawList = useQuery(api.lists.getListBySlug, { slug });

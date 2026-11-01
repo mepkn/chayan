@@ -1,4 +1,4 @@
-# Picki
+# Chayan
 
 Random list selector: create a list, hit **Select** (or Space), and watch one of three
 animated themes (Cyber HUD, Gold Stadium, Crimson Arena) land on a winner.
@@ -68,7 +68,7 @@ try_files {path} /index.html
   request (`backend/convex/lib/access.ts`), so removing an email cuts off existing sessions. Every mutation
   checks that the caller owns the list.
 - Sign-up verifies the email with a 6-digit code, and "Forgot password?" resets by code
-  (`backend/convex/otp.ts`, Resend from `Picki <noreply@send.pknspace.com>`; without `RESEND_API_KEY`
+  (`backend/convex/otp.ts`, Resend from `Chayan <noreply@send.pknspace.com>`; without `RESEND_API_KEY`
   the code is only logged in the `convex dev` output). Users from before verification were marked
   verified by a one-off migration (2026-10-31).
 - Tools for kunji: `backend/convex/http.ts` adds kunji's App contract routes via `addKunjiRoutes`
@@ -78,11 +78,11 @@ try_files {path} /index.html
   `list_lists`, `get_list` (read-only), `pick_random` (records the pick like the Pick button) and
   `add_item`; a list is named by its name or slug, and only the user's own lists are found.
 - Production env vars: `JWT_PRIVATE_KEY`/`JWKS` (`node scripts/setup-auth-keys.ts --apply --prod` in `backend/`),
-  `SITE_URL=https://picki.pknspace.com`, `ALLOWED_EMAILS`, `RESEND_API_KEY`, and `KUNJI_SECRET` / `KUNJI_URL` (kunji's `.convex.site` URL).
+  `SITE_URL=https://chayan.pknspace.com`, `ALLOWED_EMAILS`, `RESEND_API_KEY`, and `KUNJI_SECRET` / `KUNJI_URL` (kunji's `.convex.site` URL).
 
 - `backend/` is the Convex backend with its own `package.json`; `backend/convex/` holds the schema and functions (lists, items, selections). The random pick is
   done server-side in `selections:selectRandomItem`.
 - `web/` is the Vite app, with its own `package.json`; it imports the backend as `@convex/...`
   and reads `backend/.env.local`.
-- `web/src/lib/store.tsx` wraps Convex in a `PickiProvider`; components use `usePicki()`.
+- `web/src/lib/store.tsx` wraps Convex in a `ChayanProvider`; components use `useChayan()`.
 - `web/src/pages/` has the two routes; `web/src/components/selector/` the three animated themes.

@@ -10,7 +10,7 @@ import { Slider } from "@/components/ui/slider";
 import { Spinner } from "@/components/ui/spinner";
 import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { usePicki } from "@/lib/picki-context";
+import { useChayan } from "@/lib/chayan-context";
 import { sound } from "@/lib/sound";
 import type { AnimationTheme, ListDoc, SelectionMode } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -47,7 +47,7 @@ export function SettingsModal({ list, open, onOpenChange }: SettingsModalProps) 
 }
 
 function SettingsForm({ list, onClose }: { list: ListDoc; onClose: () => void }) {
-  const { updateList, clearSelections, startNewRound } = usePicki();
+  const { updateList, clearSelections, startNewRound } = useChayan();
 
   const [mode, setMode] = useState<SelectionMode>(list.selectionMode);
   const [theme, setTheme] = useState<AnimationTheme>(normalizeTheme(list.animationTheme));

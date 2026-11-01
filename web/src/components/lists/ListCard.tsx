@@ -27,7 +27,7 @@ export function ListCard({ list }: { list: ListDoc }) {
                 {selectedCount} / {itemCount}
               </span>
             </div>
-            <Progress value={progressPercent} aria-label={`Round progress ${progressPercent}%`} className="picki-progress" />
+            <Progress value={progressPercent} aria-label={`Round progress ${progressPercent}%`} className="chayan-progress" />
           </CardContent>
         )}
       </Card>
